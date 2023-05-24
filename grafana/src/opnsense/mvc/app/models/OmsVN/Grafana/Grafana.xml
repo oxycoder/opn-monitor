@@ -1,0 +1,21 @@
+<model>
+    <mount>//OmsVN/grafana</mount>
+    <description>
+        the OPNsense "Grafana" application
+    </description>
+    <items>
+        <!-- container -->
+        <general>
+            <!-- fields -->
+            <Enabled type="BooleanField">
+                <default>1</default>
+                <Required>Y</Required>
+            </Enabled>
+            <GrafanaPort type="PortField">
+                <Required>Y</Required>
+                <default>3000</default>
+                <ValidationMessage>please specify a valid port</ValidationMessage>
+            </GrafanaPort>
+        </general>
+    </items>
+</model>

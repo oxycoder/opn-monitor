@@ -1,0 +1,15 @@
+<form>
+    <field>
+        <id>grafana.general.Enabled</id>
+        <label>Enabled</label>
+        <type>checkbox</type>
+        <help>Enable this feature</help>
+    </field>
+    <field>
+        <id>grafana.general.GrafanaPort</id>
+        <label>Grafana port</label>
+        <type>text</type>
+        <help><![CDATA[grafana listen port]]></help>
+        <hint>choose port for grafana, default 3000</hint>
+    </field>
+</form>

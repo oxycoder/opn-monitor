@@ -1,0 +1,5 @@
+<menu>
+    <Lobby order="100">
+        <grafana VisibleName="Grafana" cssClass="fa pie-chart fa-fw" url="/ui/grafana"/>
+    </Lobby>
+</menu>
