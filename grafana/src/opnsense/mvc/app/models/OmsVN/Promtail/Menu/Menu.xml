@@ -1,0 +1,8 @@
+<menu>
+    <Services>
+        <Promtail VisibleName="Promtail" cssClass="fa fa-cubes fa-fw">
+            <General VisibleName="General" order="10" url="/ui/promtail"/>
+            <Logs VisibleName="Logs" order="20" url="/ui/diagnostics/log/promtail/promtail"/>
+        </Promtail>
+    </Services>
+</menu>

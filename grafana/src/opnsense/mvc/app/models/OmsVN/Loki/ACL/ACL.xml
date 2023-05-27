@@ -1,0 +1,9 @@
+<acl>
+    <page-user-oms-loki>
+        <name>Services: Loki</name>
+        <patterns>
+            <pattern>ui/loki/*</pattern>
+            <pattern>api/loki/*</pattern>
+        </patterns>
+    </page-user-oms-loki>
+</acl>

@@ -1,0 +1,37 @@
+<model>
+    <mount>//OmsVN/promtail</mount>
+    <description>the OPNsense "Promtail" application</description>
+    <version>1.0.0</version>
+    <items>
+        <!-- container -->
+        <general>
+            <!-- fields -->
+            <enabled type="BooleanField">
+                <default>0</default>
+                <Required>Y</Required>
+            </enabled>
+            <http_listen_port type="PortField">
+                <Required>Y</Required>
+                <default>9080</default>
+                <ValidationMessage>Please specify a valid port</ValidationMessage>
+            </http_listen_port>
+            <grpc_listen_port type="PortField">
+                <Required>Y</Required>
+                <default>0</default>
+                <ValidationMessage>Please specify a valid port</ValidationMessage>
+            </grpc_listen_port>
+            <loki_url type="TextField">
+                <default>http://127.0.0.1:3100/loki/api/v1/push</default>
+                <Required>Y</Required>
+            </loki_url>
+            <syslog_listen_address type="TextField">
+                <default>127.0.0.1:1514</default>
+                <Required>Y</Required>
+            </syslog_listen_address>
+            <maxmind_city_db_url type="TextField">
+                <default></default>
+                <Required>N</Required>
+            </maxmind_city_db_url>
+        </general>
+    </items>
+</model>

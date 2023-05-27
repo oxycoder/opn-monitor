@@ -1,0 +1,9 @@
+<acl>
+    <page-user-oms-grafana>
+        <name>Services: Grafana</name>
+        <patterns>
+            <pattern>ui/grafana/*</pattern>
+            <pattern>api/grafana/*</pattern>
+        </patterns>
+    </page-user-oms-grafana>
+</acl>

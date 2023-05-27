@@ -1,0 +1,8 @@
+<menu>
+    <Services>
+        <Loki VisibleName="Loki" cssClass="fa fa-cubes fa-fw">
+            <General VisibleName="General" order="10" url="/ui/loki"/>
+            <Logs VisibleName="Logs" order="20" url="/ui/diagnostics/log/loki/loki"/>
+        </Loki>
+    </Services>
+</menu>

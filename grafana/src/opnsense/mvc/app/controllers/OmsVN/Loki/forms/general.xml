@@ -1,0 +1,23 @@
+<form>
+	<field>
+		<id>loki.general.enabled</id>
+		<label>Enabled</label>
+		<type>checkbox</type>
+		<help>Enable this feature</help>
+	</field>
+	<field>
+		<id>loki.general.http_listen_port</id>
+		<label>Http listen port</label>
+		<type>text</type>
+	</field>
+	<field>
+		<id>loki.general.grpc_listen_port</id>
+		<label>GRPC listen port</label>
+		<type>text</type>
+	</field>
+	<field>
+		<id>loki.general.alertmanager_url</id>
+		<label>Alert manager url</label>
+		<type>text</type>
+	</field>
+</form>

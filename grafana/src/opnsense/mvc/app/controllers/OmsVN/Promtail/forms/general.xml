@@ -1,0 +1,33 @@
+<form>
+	<field>
+		<id>promtail.general.enabled</id>
+		<label>Enabled</label>
+		<type>checkbox</type>
+		<help>Enable this feature</help>
+	</field>
+	<field>
+		<id>promtail.general.http_listen_port</id>
+		<label>Http listen port</label>
+		<type>text</type>
+	</field>
+	<field>
+		<id>promtail.general.grpc_listen_port</id>
+		<label>GRPC listen port</label>
+		<type>text</type>
+	</field>
+	<field>
+		<id>promtail.general.loki_url</id>
+		<label>Loki url</label>
+		<type>text</type>
+	</field>
+	<field>
+		<id>promtail.general.syslog_listen_address</id>
+		<label>Syslog listen address</label>
+		<type>text</type>
+	</field>
+	<field>
+		<id>promtail.general.maxmind_city_db_url</id>
+		<label>Maxmind GEO city db url</label>
+		<type>text</type>
+	</field>
+</form>

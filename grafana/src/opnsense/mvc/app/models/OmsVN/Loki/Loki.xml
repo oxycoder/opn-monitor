@@ -1,6 +1,6 @@
 <model>
-    <mount>//OmsVN/grafana</mount>
-    <description>the OPNsense "Grafana" application</description>
+    <mount>//OmsVN/loki</mount>
+    <description>the OPNsense "Loki" application</description>
     <version>1.0.0</version>
     <items>
         <!-- container -->
@@ -10,20 +10,21 @@
                 <default>0</default>
                 <Required>Y</Required>
             </enabled>
-            <protocol type="OptionField">
+            <http_listen_port type="PortField">
                 <Required>Y</Required>
-                <default>http</default>
-                <OptionValues>
-                    <opt1 value="http">http</opt1>
-                    <opt2 value="https">https</opt2>
-                </OptionValues>
-            </protocol>
-            <port type="PortField">
-                <Required>Y</Required>
-                <default>3000</default>
+                <default>3100</default>
                 <ValidationMessage>Please specify a valid port</ValidationMessage>
-            </port>
-            <log_level type="OptionField">
+            </http_listen_port>
+            <grpc_listen_port type="PortField">
+                <Required>N</Required>
+                <default></default>
+                <ValidationMessage>Please specify a valid port</ValidationMessage>
+            </grpc_listen_port>
+            <alertmanager_url type="TextField">
+                <default></default>
+                <Required>N</Required>
+            </alertmanager_url>
+            <!-- <log_level type="OptionField">
                 <Required>Y</Required>
                 <default>info</default>
                 <OptionValues>
@@ -52,15 +53,7 @@
                     <LOCAL6>LOCAL6</LOCAL6>
                     <LOCAL7>LOCAL7</LOCAL7>
                 </OptionValues>
-            </syslog_facility>
-            <cert_file type="TextField">
-                <default></default>
-                <Required>N</Required>
-            </cert_file>
-            <cert_key type="TextField">
-                <default></default>
-                <Required>N</Required>
-            </cert_key>
+            </syslog_facility> -->
         </general>
     </items>
 </model>
