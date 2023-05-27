@@ -1,5 +1,8 @@
 <menu>
-    <Lobby order="100">
-        <grafana VisibleName="Grafana" cssClass="fa pie-chart fa-fw" url="/ui/grafana"/>
-    </Lobby>
+    <Services>
+        <Grafana VisibleName="Grafana" cssClass="fa fa-cubes fa-fw">
+            <General VisibleName="General" order="10" url="/ui/grafana"/>
+            <Logs VisibleName="Logs" order="20" url="/ui/grafana/logs"/>
+        </Grafana>
+    </Services>
 </menu>

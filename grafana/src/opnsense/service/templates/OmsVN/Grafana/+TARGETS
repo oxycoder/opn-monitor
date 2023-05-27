@@ -1,1 +1,1 @@
-grafana.conf:/usr/local/etc/grafana/grafana.conf
+grafana.ini:/usr/local/etc/grafana/grafana.ini

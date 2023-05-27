@@ -6,8 +6,29 @@ Custom opensense repository
 * Loki
 * Promtail
 
-# Install
+# Prerequires
+
+1. Enable ports 
+```
+opnsense-code tools ports src
+```
+
+2. Install grafana
+```
+cd /usr/ports/www/grafana9/ && make install clean
+```
+
+3. Install loki & promtail
+```
+cd /usr/ports/sysutils/loki/ && make install clean
+```
+
+4. Enable services:
 
 ```
-fetch -o /usr/local/etc/pkg/repos/omsvn.conf https://www.opn.oms.vn/omsvn.conf
+sysrc grafana_enable=YES
+sysrc loki_enable=YES
+sysrc promtail_enable=YES
 ```
+
+# Install plugin

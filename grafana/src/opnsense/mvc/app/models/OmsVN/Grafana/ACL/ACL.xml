@@ -1,6 +1,6 @@
 <acl>
     <page-user-oms-grafana>
-        <name>Lobby: Grafana</name>
+        <name>Services: Grafana</name>
         <patterns>
             <pattern>ui/grafana/*</pattern>
             <pattern>api/grafana/*</pattern>
