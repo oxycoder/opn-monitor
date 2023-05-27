@@ -1,20 +1,57 @@
 <form>
-    <field>
-        <id>grafana.general.enabled</id>
-        <label>Enabled</label>
-        <type>checkbox</type>
-        <help>Enable this feature</help>
-    </field>
-    <field>
-        <id>grafana.general.protocol</id>
-        <label>Grafana protocol</label>
-        <type>dropdown</type>
-        <help><![CDATA[Protocol (http, https, h2, socket)]]></help>
-    </field>
-    <field>
-        <id>grafana.general.port</id>
-        <label>Grafana port</label>
-        <type>text</type>
-        <help><![CDATA[Choose port for grafana, default 3000]]></help>
-    </field>
+	<field>
+		<id>grafana.general.enabled</id>
+		<label>Enabled</label>
+		<type>checkbox</type>
+		<help>Enable this feature</help>
+	</field>
+	<field>
+		<id>grafana.general.protocol</id>
+		<label>Grafana protocol</label>
+		<type>dropdown</type>
+		<help>
+			<![CDATA[Protocol (http, https). Must provide cert file path and cert key path if you select https]]>
+		</help>
+	</field>
+	<field>
+		<id>grafana.general.port</id>
+		<label>Grafana port</label>
+		<type>text</type>
+		<help>
+			<![CDATA[Choose port for grafana, default 3000]]>
+		</help>
+	</field>
+	<field>
+		<id>grafana.general.log_level</id>
+		<label>Log Level</label>
+		<type>dropdown</type>
+		<help>Select how detailed the logs should be debug is the most verbose setting.</help>
+	</field>
+	<field>
+		<id>grafana.general.syslog_enabled</id>
+		<label>Enable Syslog</label>
+		<type>checkbox</type>
+		<help>Enable Syslog logging.</help>
+	</field>
+	<field>
+		<id>grafana.general.syslog_facility</id>
+		<label>Syslog Facility</label>
+		<type>dropdown</type>
+	</field>
+	<field>
+		<id>grafana.general.cert_file</id>
+		<label>HTTPS cert file path</label>
+		<type>text</type>
+		<help>
+			<![CDATA[Provide path to https cert file]]>
+		</help>
+	</field>
+	<field>
+		<id>grafana.general.cert_key</id>
+		<label>HTTPS cert key path</label>
+		<type>text</type>
+		<help>
+			<![CDATA[Provide path to https cert key]]>
+		</help>
+	</field>
 </form>

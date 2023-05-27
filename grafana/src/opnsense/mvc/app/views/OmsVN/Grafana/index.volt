@@ -2,6 +2,7 @@
     $(document).ready(function () {
         var data_get_map = { 'frm_GeneralSettings': "/api/grafana/settings/get" };
         mapDataToFormUI(data_get_map).done(function (data) {
+            formatTokenizersUI();
             // place actions to run after load, for example update form styles.
             $('.selectpicker').selectpicker({ title: 'All (recommended)' }).selectpicker('render');
             $('.selectpicker').selectpicker('refresh');

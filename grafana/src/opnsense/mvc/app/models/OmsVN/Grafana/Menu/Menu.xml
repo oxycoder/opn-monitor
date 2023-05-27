@@ -2,7 +2,7 @@
     <Services>
         <Grafana VisibleName="Grafana" cssClass="fa fa-cubes fa-fw">
             <General VisibleName="General" order="10" url="/ui/grafana"/>
-            <Logs VisibleName="Logs" order="20" url="/ui/grafana/logs"/>
+            <Logs VisibleName="Logs" order="20" url="/ui/diagnostics/log/grafana/grafana"/>
         </Grafana>
     </Services>
 </menu>
