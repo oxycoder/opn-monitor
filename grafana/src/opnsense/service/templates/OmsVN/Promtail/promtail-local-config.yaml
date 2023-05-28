@@ -1,57 +1,16 @@
-{% if helpers.exists('OmsVN.promtail') and OmsVN.promtail.enabled|default("0") == "1" %}
+{% if helpers.exists('OmsVN.promtail.general') and OmsVN.promtail.general.enabled|default("0") == "1" %}
 server:
-  http_listen_port: {{ OmsVN.promtail.http_listen_port|default(9080) }}
-  grpc_listen_port: {{ OmsVN.promtail.grpc_listen_port|default(0) }}
+  http_listen_port: {{ OmsVN.promtail.general.http_listen_port|default(9080) }}
+  grpc_listen_port: {{ OmsVN.promtail.general.grpc_listen_port|default(0) }}
 
 positions:
   filename: /var/tmp/promtail-syslog-positions.yml
 
 clients:
-  - url: {{ OmsVN.promtail.loki_url|default("http://127.0.0.1:3100/loki/api/v1/push") }}
+  - url: {{ OmsVN.promtail.general.loki_url|default("http://127.0.0.1:3100/loki/api/v1/push") }}
 
-scrape_configs:
-- job_name: syslog
-  syslog:
-    listen_address: {{ OmsVN.promtail.syslog_listen_address|default("0.0.0.0:1514") }}
-    idle_timeout: 60s
-    listen_protocol: tcp
-    label_structured_data: yes
-    use_rfc5424_message: true
-    labels:
-      job: "syslog"
-
-  pipeline_stages:
-
-  # This stage is only going to run if the scraped target has a label
-  # of "name" with value "promtail".
-  - match:
-      selector: '{host="OPNsense.localdomain"}'
-      stages:
-      # The regex stage parses out a level, timestamp, and component. At the end
-      # of the stage, the values for level, timestamp, and component are only
-      # set internally for the pipeline. Future stages can use these values and
-      # decide what to do with them.
-      - regex:
-          expression: '^(?P<rule_number>[\d]+),(?P<sub_rule_number>[\d]*),(?P<anchor>[\d]*),(?P<tracker>[\d]*),(?P<interface>[\w\d]*),(?P<reason>[\w]*),(?P<action>[\w]*),(?P<direction>[\w]*),(?P<ip_version>[\d]*),[x\da-f]*,[x\da-f]*,(?P<packet_ttl>[\d]*),(?P<packet_id>[\d]*),(?P<fragment_offset>[\w]*),(?P<ip_flags>.*?),(?P<protocol_id>[\d]*),(?P<protocol_name>[\w]*),(?P<source_port>[\d]*),(?P<source_ip>[\d.]*),(?P<dest_ip>[\d.]*),(?P<dest_port>[\d]*),'
-
-      # The labels stage takes the level and component entries from the previous
-      # regex stage and promotes them to a label. For example, level=error may
-      # be a label added by this stage.
-      - labels:
-          interface:
-          action:
-          direction:
-          protocol_name:
-          source_ip:
-          source_port:
-          dest_ip:
-          dest_port:
-
-      {% if helpers.exists('OmsVN.promtail') and OmsVN.promtail.maxmind_city_db_url != "" %}
-      - geoip:
-          db: {{ OmsVN.promtail.maxmind_city_db_url }}
-          source: source_ip
-          db_type: "city"
-      {% endif %}
+{% if helpers.exists('OmsVN.promtail.general') and OmsVN.promtail.general.scrape_configs != "" %}
+{{ OmsVN.promtail.general.scrape_configs }}
+{% endif %}
 
 {% endif %}

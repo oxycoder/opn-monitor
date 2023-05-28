@@ -1,9 +1,9 @@
-{% if helpers.exists('OmsVN.monitor.loki') and OmsVN.monitor.loki.enabled|default("0") == "1" %}
+{% if helpers.exists('OmsVN.loki.general') and OmsVN.loki.general.enabled|default("0") == "1" %}
 auth_enabled: false
 
 server:
-  http_listen_port: {{ OmsVN.monitor.loki.http_listen_port|default(3100) }}
-  grpc_listen_port: {{ OmsVN.monitor.loki.grpc_listen_port|default(0) }}
+  http_listen_port: {{ OmsVN.loki.general.http_listen_port|default(3100) }}
+  grpc_listen_port: {{ OmsVN.loki.general.grpc_listen_port|default(0) }}
 
 common:
   instance_addr: 127.0.0.1
@@ -35,7 +35,7 @@ schema_config:
         period: 24h
 
 ruler:
-  alertmanager_url: {{ OmsVN.monitor.loki.alertmanager_url|default(http://localhost:9093) }}
+  alertmanager_url: {{ OmsVN.loki.general.alertmanager_url|default("http://localhost:9093") }}
 
 # By default, Loki will send anonymous, but uniquely-identifiable usage and configuration
 # analytics to Grafana Labs. These statistics are sent to https://stats.grafana.org/

@@ -24,7 +24,7 @@
 
 <div class="alert alert-info hidden" role="alert" id="loki-response">
     <div id="loki-alert-messages" class="loki-alert-messages">
-        <label>Update config success. Restart service to take effect.</label>
+        <label>Apply config success.</label>
     </div>
 </div>
 

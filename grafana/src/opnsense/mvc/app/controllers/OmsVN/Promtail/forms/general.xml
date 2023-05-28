@@ -21,13 +21,9 @@
 		<type>text</type>
 	</field>
 	<field>
-		<id>promtail.general.syslog_listen_address</id>
-		<label>Syslog listen address</label>
+		<id>promtail.general.scrape_configs</id>
+		<label>Loki scrape configs.</label>
 		<type>text</type>
-	</field>
-	<field>
-		<id>promtail.general.maxmind_city_db_url</id>
-		<label>Maxmind GEO city db url</label>
-		<type>text</type>
+		<help>YAML format. WARNING: NO VALIDATION.</help>
 	</field>
 </form>
