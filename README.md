@@ -32,3 +32,6 @@ sysrc promtail_enable=YES
 ```
 
 # Install plugin
+```
+rsync -a ./src/ root@opnsenseIP:/usr/local/
+```
