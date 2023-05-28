@@ -40,15 +40,20 @@ load_rc_config $name
 : ${promtail_enable:="NO"}
 : ${promtail_user:="nobody"}
 : ${promtail_group:="nobody"}
+: ${promtail_config:="/usr/local/etc/promtail-local-config.yaml"}
+: ${promtail_logfile:="/var/log/promtail/promtail.log"}
+: ${promtail_loglevel:="info"}
 
 pidfile="/var/run/${name}/${name}.pid"
 required_files="${promtail_config}"
 
 procname="/usr/local/bin/promtail"
 command="/usr/sbin/daemon"
-command_args="${procname} \
-	-config.file=/usr/local/etc/promtail-local-config.yaml \
-    -log.format=json \
+command_args="-p ${pidfile} -t ${name} -o ${promtail_logfile} \
+	${procname} \
+	--config.file=${promtail_config} \
+	--log.level=${promtail_loglevel} \
+	--log.format=json \
 	${promtail_args}"
 
 start_precmd="promtail_start_precmd"

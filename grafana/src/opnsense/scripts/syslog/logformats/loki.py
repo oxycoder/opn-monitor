@@ -7,7 +7,7 @@ loki_format = r'^level=(.+?)\sts=(.+?)\scaller=(.+)msg=(.+)'
 class LokiLogFormat(NewBaseLogFormat):
     def __init__(self, filename):
         super().__init__(filename)
-        self._priority = 100
+        self._priority = 1
 
     def match(self, line):
         return self._filename.find('loki') > -1 and re.match(loki_format, line) is not None

@@ -24,36 +24,6 @@
                 <default></default>
                 <Required>N</Required>
             </alertmanager_url>
-            <!-- <log_level type="OptionField">
-                <Required>Y</Required>
-                <default>info</default>
-                <OptionValues>
-                    <debug>Debug</debug>
-                    <info>Info</info>
-                    <warn>Warn</warn>
-                    <error>Error</error>
-                    <critical>Critical</critical>
-                </OptionValues>
-            </log_level>
-            <syslog_enabled type="BooleanField">
-                <default>0</default>
-                <Required>Y</Required>
-            </syslog_enabled>
-            <syslog_facility type="OptionField">
-                <Required>Y</Required>
-                <default>LOCAL0</default>
-                <OptionValues>
-                    <USER>USER</USER>
-                    <LOCAL0>LOCAL0</LOCAL0>
-                    <LOCAL1>LOCAL1</LOCAL1>
-                    <LOCAL2>LOCAL2</LOCAL2>
-                    <LOCAL3>LOCAL3</LOCAL3>
-                    <LOCAL4>LOCAL4</LOCAL4>
-                    <LOCAL5>LOCAL5</LOCAL5>
-                    <LOCAL6>LOCAL6</LOCAL6>
-                    <LOCAL7>LOCAL7</LOCAL7>
-                </OptionValues>
-            </syslog_facility> -->
         </general>
     </items>
 </model>

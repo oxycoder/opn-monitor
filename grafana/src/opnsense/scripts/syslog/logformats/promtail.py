@@ -2,46 +2,47 @@ import json
 
 from . import NewBaseLogFormat
 
-def is_not_blank(s):
-    return bool(s and not s.isspace())
-
-class GrafanaLogFormat(NewBaseLogFormat):
+class PromtailLogFormat(NewBaseLogFormat):
     def __init__(self, filename):
         super().__init__(filename)
-        self._priority = 100
+        self._priority = 1
 
     def match(self, line):
+        if bool(line and not line.isspace()):
+            return json.loads(line)
+        
+    def get_key(self, key):
         try:
-            if is_not_blank(line):
-                return json.loads(line)
-            return False
+            return self._parts[key]
         except:
-            return False
+            return None
+    
+    def set_line(self, line):
+        super().set_line(line)
+        self._parts = json.loads(self._line)
 
     @property
     def timestamp(self):
-        tmp = json.loads(self._line)
-        return tmp['t']
+        return self.get_key('ts')
 
     @property
     def line(self):
-        tmp = json.loads(self._line)
-        msg = tmp['msg']
-        if 'error' in tmp:
-            msg += "\nError:" + tmp['error']
-        if 'reason' in tmp:
-            msg += "\nReason:" + tmp['reason']
+        msg = self.get_key('msg')
+        err = self.get_key('error')
+        reason = self.get_key('reason')
+        if err is not None:
+            msg += ". Error: " + err
+        if reason is not None:
+            msg += ". Reason: " + reason
         return msg
     
     @property
     def process_name(self):
-        tmp = json.loads(self._line)
-        return tmp['logger']
+        self.get_key('caller')
 
     @property
     def severity(self):
-        tmp = json.loads(self._line)
-        level = tmp['level']
+        level = self.get_key('level')
         if level == "info":
             return 6
         if level == "debug":
@@ -56,5 +57,5 @@ class GrafanaLogFormat(NewBaseLogFormat):
 
     @property
     def pid(self):
-        return "grafana"
+        return "promtail"
         
