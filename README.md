@@ -2,6 +2,8 @@ Custom opnsense plugin bring support for Grafana, Loki and Promtail.
 
 ## Demos
 
+More can be found here: [demos](https://github.com/oxycoder/opn-repo/blob/main/images)
+
 ![grafana](https://github.com/oxycoder/opn-repo/blob/main/images/grafana-general.png?raw=true)
 ![loki](https://github.com/oxycoder/opn-repo/blob/main/images/loki-general.png?raw=true)
 ![promtail](https://github.com/oxycoder/opn-repo/blob/main/images/promtail-general.png?raw=true)
