@@ -10,10 +10,17 @@ class PromtailLogFormat(NewBaseLogFormat):
     def match(self, line):
         # need to check file name here otherwise it will fallback to another LogFormater
         # weird thing happen in FormatContainer.get_format that take first line match base on piority.
-        if self._filename.find('promtail') == -1:
+        if self._filename.find("promtail") == -1:
             return None
-        if bool(line and not line.isspace()):
+        try:
             return json.loads(line)
+        except:
+            if bool(line and not line.isspace()):
+                self._parts["msg"] = line
+                return True
+            else:
+                return None
+            
         
     def get_key(self, key):
         try:
@@ -23,17 +30,20 @@ class PromtailLogFormat(NewBaseLogFormat):
     
     def set_line(self, line):
         super().set_line(line)
-        self._parts = json.loads(self._line)
+        try:
+            self._parts = json.loads(self._line)
+        except:
+            self._parts["msg"] = line
 
     @property
     def timestamp(self):
-        return self.get_key('ts')
+        return self.get_key("ts")
 
     @property
     def line(self):
-        msg = self.get_key('msg')
-        err = self.get_key('err')
-        reason = self.get_key('reason')
+        msg = self.get_key("msg")
+        err = self.get_key("err")
+        reason = self.get_key("reason")
         if err is not None:
             msg += ". Error: " + err
         if reason is not None:
@@ -42,11 +52,11 @@ class PromtailLogFormat(NewBaseLogFormat):
     
     @property
     def process_name(self):
-        self.get_key('caller')
+        self.get_key("caller")
 
     @property
     def severity(self):
-        level = self.get_key('level')
+        level = self.get_key("level")
         if level == "info":
             return 6
         if level == "debug":
