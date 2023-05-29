@@ -5,9 +5,13 @@ from . import NewBaseLogFormat
 class GrafanaLogFormat(NewBaseLogFormat):
     def __init__(self, filename):
         super().__init__(filename)
-        self._priority = 1
+        self._priority = 200
 
     def match(self, line):
+        # need to check file name here otherwise it will fallback to another LogFormater
+        # weird thing happen in FormatContainer.get_format that take first line match base on piority.
+        if self._filename.find('grafana') == -1:
+            return None
         if bool(line and not line.isspace()):
             return json.loads(line)
         
