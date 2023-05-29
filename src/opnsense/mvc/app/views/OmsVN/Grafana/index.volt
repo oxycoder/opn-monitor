@@ -13,7 +13,7 @@
             saveFormToEndpoint(url = "/api/grafana/settings/set", formid = 'frm_GeneralSettings', callback_ok = function () {
                 $('#grafana-response').removeClass('hidden');
                 ajaxCall(url = "/api/grafana/service/reconfigure", sendData = {}, callback = function (data, status) {
-                
+                    updateServiceControlUI('grafana');
                 });
             });
         });

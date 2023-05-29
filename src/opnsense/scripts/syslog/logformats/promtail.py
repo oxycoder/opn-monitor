@@ -32,7 +32,7 @@ class PromtailLogFormat(NewBaseLogFormat):
     @property
     def line(self):
         msg = self.get_key('msg')
-        err = self.get_key('error')
+        err = self.get_key('err')
         reason = self.get_key('reason')
         if err is not None:
             msg += ". Error: " + err

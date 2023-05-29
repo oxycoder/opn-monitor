@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# pw adduser promtail -d /nonexistent -s /usr/sbin/nologin -c "promtail user"
+pw adduser promtail -d /nonexistent -s /usr/sbin/nologin -c "promtail user"
 
 cp /usr/local/opnsense/scripts/OmsVN/Promtail/promtail /usr/local/etc/rc.d/
 chmod +x /usr/local/etc/rc.d/promtail

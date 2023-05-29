@@ -13,7 +13,7 @@
             saveFormToEndpoint(url = "/api/loki/settings/set", formid = 'frm_GeneralSettings', callback_ok = function () {
                 $('#loki-response').removeClass('hidden');
                 ajaxCall(url = "/api/loki/service/reconfigure", sendData = {}, callback = function (data, status) {
-                
+                    updateServiceControlUI('loki');
                 });
             });
         });
