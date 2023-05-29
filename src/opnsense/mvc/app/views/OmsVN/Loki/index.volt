@@ -12,7 +12,7 @@
         $("#saveAct").click(function () {
             saveFormToEndpoint(url = "/api/loki/settings/set", formid = 'frm_GeneralSettings', callback_ok = function () {
                 $('#loki-response').removeClass('hidden');
-                ajaxCall(url = "/api/loki/service/reload", sendData = {}, callback = function (data, status) {
+                ajaxCall(url = "/api/loki/service/reconfigure", sendData = {}, callback = function (data, status) {
                 
                 });
             });

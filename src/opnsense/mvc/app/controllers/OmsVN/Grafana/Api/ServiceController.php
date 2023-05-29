@@ -16,20 +16,11 @@ class ServiceController extends ApiMutableServiceControllerBase
     protected static $internalServiceTemplate = 'OmsVN/Grafana';
     protected static $internalServiceName = 'grafana';
 
-    // /**
-    //  * reconfigure grafana
-    //  */
-    public function reloadAction()
-    {
-        $status = "failed";
-        if ($this->request->isPost()) {
-            $backend = new Backend();
-            $bckresult = trim($backend->configdRun('template reload OmsVN/Grafana'));
-            if ($bckresult == "OK") {
-                $status = "ok";
-            }
-            $this->restartAction();
-        }
-        return array("status" => $status);
+    /**
+     * reconfigure force restart check, return zero for soft-reload
+     */
+    public function reconfigureForceRestart() {
+        // do not restart service on reconfigure
+        return 0;
     }
 }

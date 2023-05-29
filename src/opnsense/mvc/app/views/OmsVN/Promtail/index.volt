@@ -27,7 +27,7 @@
         $("#saveAct").click(function () {
             saveFormData(url = "/api/promtail/settings/set", formid = 'frm_GeneralSettings', callback_ok = function () {
                 $('#promtail-response').removeClass('hidden');
-                ajaxCall(url = "/api/promtail/service/reload", sendData = {}, callback = function (data, status) {
+                ajaxCall(url = "/api/promtail/service/reconfigure", sendData = {}, callback = function (data, status) {
 
                 });
             });

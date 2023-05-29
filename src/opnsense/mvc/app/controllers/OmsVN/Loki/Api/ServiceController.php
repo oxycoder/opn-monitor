@@ -16,20 +16,11 @@ class ServiceController extends ApiMutableServiceControllerBase
     protected static $internalServiceTemplate = 'OmsVN/Loki';
     protected static $internalServiceName = 'loki';
 
-    // /**
-    //  * reconfigure loki
-    //  */
-    public function reloadAction()
-    {
-        $status = "failed";
-        if ($this->request->isPost()) {
-            $backend = new Backend();
-            $bckresult = trim($backend->configdRun('template reload OmsVN/Loki'));
-            if ($bckresult == "OK") {
-                $status = "ok";
-            }
-            $this->restartAction();
-        }
-        return array("status" => $status);
+    /**
+     * reconfigure force restart check, return zero for soft-reload
+     */
+    public function reconfigureForceRestart() {
+        // do not restart service on reconfigure
+        return 0;
     }
 }

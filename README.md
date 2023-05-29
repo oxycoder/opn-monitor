@@ -1,12 +1,23 @@
-# opn-repo
-Custom opensense repository
+Custom opnsense plugin bring support for Grafana, Loki and Promtail.
 
-# List of packages
+## Demos
+
+![grafana](https://github.com/oxycoder/opn-repo/blob/main/images/grafana-general.png?raw=true)
+![loki](https://github.com/oxycoder/opn-repo/blob/main/images/loki-general.png?raw=true)
+![promtail](https://github.com/oxycoder/opn-repo/blob/main/images/promtail-general.png?raw=true)
+
+## List of plugins
 * Grafana
 * Loki
 * Promtail
 
-# Prerequires
+
+## Install plugin
+```
+rsync -av ./src/ root@opnsenseIP:/usr/local/
+```
+
+## Install grafana, loki, promtail (build form source)
 
 1. Enable ports 
 ```
@@ -22,6 +33,10 @@ cd /usr/ports/www/grafana9/ && make install clean
 ```
 cd /usr/ports/sysutils/loki/ && make install clean
 ```
+By default, sysutils/loki package only create loki rc.d service, so you may need to run (as root) setup script to create promtail rc.d service
+```
+/usr/local/opnsense/scripts/OmsVN/Promtail/setup.sh
+```
 
 4. Enable services:
 
@@ -31,10 +46,6 @@ sysrc loki_enable=YES
 sysrc promtail_enable=YES
 ```
 
-# Install plugin
-```
-rsync -av ./src/ root@opnsenseIP:/usr/local/
-```
 
 ## Example configuration for promtail scrape configs
 ```

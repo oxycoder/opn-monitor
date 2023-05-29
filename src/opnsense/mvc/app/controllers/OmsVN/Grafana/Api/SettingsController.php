@@ -3,8 +3,6 @@
 namespace OmsVN\Grafana\Api;
 
 use OPNsense\Base\ApiMutableModelControllerBase;
-use OmsVN\Grafana\Grafana;
-use OPNsense\Core\Config;
 
 /**
  * Class SettingsController Handles settings related API actions for the grafana module
