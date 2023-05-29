@@ -42,7 +42,9 @@ class PromtailLogFormat(NewBaseLogFormat):
     @property
     def line(self):
         msg = self.get_key("msg")
-        err = self.get_key("err")
+        if (self.get_key("key")) is not None:
+            msg += ". Key: {}".format(self.get_key("key"))
+        err = self.get_key("error") or self.get_key("err")
         reason = self.get_key("reason")
         if err is not None:
             msg += ". Error: " + err
