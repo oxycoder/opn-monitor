@@ -43,9 +43,9 @@ By default, sysutils/loki package only create loki rc.d service, so you may need
 4. Enable services:
 
 ```
-sysrc grafana_enable=YES
-sysrc loki_enable=YES
-sysrc promtail_enable=YES
+service grafana enable
+service loki enable
+service promtail enable
 ```
 
 

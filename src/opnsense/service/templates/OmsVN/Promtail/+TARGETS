@@ -1,2 +1,2 @@
-promtail-local-config.yaml:/usr/local/etc/promtail-local-config.yaml
+promtail.yaml:/usr/local/etc/promtail.yaml
 promtail:/etc/rc.conf.d/promtail
