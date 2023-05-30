@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  test:
+    runs-on: macos-12
+    name: Build plugins
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.5.2
+    - name: FreeBSD VM
+      id: build
+      uses: vmactions/freebsd-vm@v0
+      with:
+        release: 13.1
+        usesh: true
+        sync: sshfs
+        prepare: |
+          pkg install -y git
+          pkg install -y python
+          pkg install -y php82
+          pkg install -y rsync
+        envs: 'PLUGIN_DEVEL=false'
+        run: |
+          git clone https://github.com/opnsense/plugins /usr/plugins
+          rsync -av --exclude '.git' ./ /usr/plugins/net/opn-monitor/
+          cd /usr/plugins/net/opn-monitor/
+          make package
+          cd -
+          cp /usr/plugins/net/opn-monitor/work/pkg/* ./
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "*.pkg"
+        generateReleaseNotes: true
