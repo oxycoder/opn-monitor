@@ -3,4 +3,6 @@ Provide support for Grafana, Loki and Promtail
 Plugin Changelog
 ================
 
+1.0_1 Fix Grafana and promtail log reader
+
 1.0 Initial release

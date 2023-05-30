@@ -16,7 +16,7 @@ More can be found here: [demos](https://github.com/oxycoder/opn-repo/blob/main/i
 
 ## Install plugin
 ```
-rsync -av ./src/ root@opnsenseIP:/usr/local/
+pkg add https://github.com/oxycoder/opn-monitor/releases/latest/download/os-opn-monitor-1.0_1.pkg 
 ```
 
 ## Install grafana, loki, promtail (build form source)

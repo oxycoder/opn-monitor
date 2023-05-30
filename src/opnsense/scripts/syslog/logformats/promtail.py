@@ -6,6 +6,7 @@ class PromtailLogFormat(NewBaseLogFormat):
     def __init__(self, filename):
         super().__init__(filename)
         self._priority = 200
+        self._parts = list()
 
     def match(self, line):
         # need to check file name here otherwise it will fallback to another LogFormater
